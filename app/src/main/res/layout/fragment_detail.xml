@@ -27,6 +27,13 @@
             android:layout_width="wrap_content"
             android:textColor="@color/grey_700"
             android:textSize="16sp" />
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/detail_city_textview"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/grey_700"
+            android:textSize="16sp" />
 
         <!-- Main content: high, low, art, weather state -->
         <LinearLayout

@@ -66,7 +66,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             WeatherEntry.COLUMN_WEATHER_ID,
             // This works because the WeatherProvider returns location data joined with
             // weather data, even though they're stored in two different tables.
-            WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING
+            WeatherContract.LocationEntry.COLUMN_LOCATION_SETTING,
+            WeatherContract.LocationEntry.COLUMN_CITY_NAME
     };
 
     // These indices are tied to DETAIL_COLUMNS.  If DETAIL_COLUMNS changes, these
@@ -81,10 +82,12 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     public static final int COL_WEATHER_WIND_SPEED = 7;
     public static final int COL_WEATHER_DEGREES = 8;
     public static final int COL_WEATHER_CONDITION_ID = 9;
+    public static final int COL_WEATHER_CITY_NAME = 10;
 
     private ImageView mIconView;
     private TextView mFriendlyDateView;
     private TextView mDateView;
+    private TextView mCityView;
     private TextView mDescriptionView;
     private TextView mHighTempView;
     private TextView mLowTempView;
@@ -108,6 +111,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         mIconView = (ImageView) rootView.findViewById(R.id.detail_icon);
         mDateView = (TextView) rootView.findViewById(R.id.detail_date_textview);
+        mCityView = (TextView) rootView.findViewById(R.id.detail_city_textview);
         mFriendlyDateView = (TextView) rootView.findViewById(R.id.detail_day_textview);
         mDescriptionView = (TextView) rootView.findViewById(R.id.detail_forecast_textview);
         mHighTempView = (TextView) rootView.findViewById(R.id.detail_high_textview);
@@ -192,6 +196,9 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             String dateText = Utility.getFormattedMonthDay(getActivity(), date);
             mFriendlyDateView.setText(friendlyDateText);
             mDateView.setText(dateText);
+
+            String city_name = data.getString(COL_WEATHER_CITY_NAME);
+            mCityView.setText(city_name);
 
             // Read description from cursor and update view
             String description = data.getString(COL_WEATHER_DESC);

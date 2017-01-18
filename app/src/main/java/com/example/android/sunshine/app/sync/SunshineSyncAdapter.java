@@ -287,6 +287,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_MIN_TEMP, low);
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_SHORT_DESC, description);
                 weatherValues.put(WeatherContract.WeatherEntry.COLUMN_WEATHER_ID, weatherId);
+                weatherValues.put(WeatherContract.LocationEntry.COLUMN_CITY_NAME, cityName);
 
                 cVVector.add(weatherValues);
             }
